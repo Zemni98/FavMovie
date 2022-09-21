@@ -14,11 +14,11 @@ import javax.validation.constraints.NotBlank;
 public class User {
     @Id
     @GeneratedValue
-    private long userSeq;
+    private long userId;
 
     @Column(unique = true)
-    @NotBlank(message = "ID를 입력해주세요.")
-    private String userId;
+    @NotBlank(message = "Name을 입력해주세요.")
+    private String userName;
 
     @NotBlank(message = "PW를 입력해주세요.")
     private String password;

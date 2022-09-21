@@ -21,7 +21,6 @@ public class UserController {
 
     @PostMapping("/signup")
     public ResponseEntity signup(@RequestBody UserRequest request) {
-        log.info("userId = {}, password = {}", request.getUserId(), request.getPassword());
         if(userService.signup(request).equals("Success")) {
             return new ResponseEntity(HttpStatus.CREATED);
         }
@@ -29,8 +28,7 @@ public class UserController {
     }
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody UserRequest request) {
-        log.info("userId = {}, password = {}", request.getUserId(), request.getPassword());
-        if(userService.login(request.getUserId(), request.getPassword()).equals("Success")) {
+        if(userService.login(request.getUserName(), request.getPassword()).equals("Success")) {
             return new ResponseEntity(HttpStatus.OK);
         }
         return new ResponseEntity(HttpStatus.BAD_REQUEST);
